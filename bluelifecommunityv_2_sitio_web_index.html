@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="BLUELIFECOMMUNITYV2 - Servidor de GTA V Roleplay. Reglas, Rol, Facciones y Sanciones. Únete al Discord y revisa la normativa oficial." />
+  <title>BLUELIFECOMMUNITYV2 | GTA V Roleplay</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="icon" href="https://r2.fivemanage.com/EDoxYCRRUShyyMYu4oXdF/descarga.jpg" />
+  <style>
+    :root{
+      --bg:#0b1220;           /* navy oscuro */
+      --bg2:#0e172b;          /* navy intermedio */
+      --card:#101a31;         /* carta */
+      --text:#e6f1ff;         /* texto claro */
+      --muted:#a5b9d6;        /* texto secundario */
+      --brand:#00c2ff;        /* cian */
+      --brand2:#4fd1ff;       /* cian claro */
+      --accent:#4ad1b8;       /* turquesa */
+      --ring: 0 0 0 2px rgba(0,194,255,0.35);
+      --shadow: 0 20px 50px rgba(0, 194, 255, .08);
+      --radius: 18px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0; font-family:'Poppins',system-ui,-apple-system,Segoe UI,Roboto,Arial,Helvetica,sans-serif;
+      background: radial-gradient(1200px 600px at 80% -10%, rgba(0,194,255,.12), transparent 60%),
+                  radial-gradient(900px 500px at -10% 10%, rgba(74,209,184,.10), transparent 60%),
+                  linear-gradient(180deg, #0b1220 0%, #0a0f1a 100%);
+      color:var(--text);
+    }
+    a{color:inherit; text-decoration:none}
+    img{max-width:100%; height:auto}
+
+    /* Header */
+    .nav{position:sticky; top:0; z-index:50; backdrop-filter:saturate(140%) blur(10px);
+      background:linear-gradient(180deg, rgba(10,16,27,.85), rgba(10,16,27,.65)); border-bottom:1px solid rgba(255,255,255,.05)}
+    .nav-inner{max-width:1200px; margin:auto; padding:14px 20px; display:flex; align-items:center; gap:18px}
+    .brand{display:flex; align-items:center; gap:12px}
+    .brand img{width:42px; height:42px; border-radius:10px; object-fit:cover; box-shadow:var(--shadow)}
+    .brand h1{font-size:18px; font-weight:700; letter-spacing:.5px; margin:0}
+    .nav-links{margin-left:auto; display:flex; gap:14px; flex-wrap:wrap}
+    .nav-links a{padding:10px 14px; border-radius:12px; color:var(--muted); font-weight:600; font-size:14px}
+    .nav-links a:hover{color:var(--text); background:rgba(255,255,255,.04)}
+    .btn{display:inline-flex; align-items:center; gap:10px; padding:12px 18px; border-radius:14px; font-weight:700; border:1px solid rgba(255,255,255,.1); background:linear-gradient(180deg, rgba(16,26,49,.9), rgba(16,26,49,.75)); box-shadow:var(--shadow)}
+    .btn:hover{transform:translateY(-1px); box-shadow:0 14px 30px rgba(0,0,0,.25), 0 0 0 1px rgba(79,209,255,.18) inset}
+    .btn-primary{background:linear-gradient(180deg, #00c2ff, #00a6df); color:#00111a; border-color:rgba(0,0,0,.0)}
+    .btn-primary:hover{filter:brightness(1.05)}
+
+    /* Hero */
+    .hero{max-width:1200px; margin:40px auto 0; padding:30px 20px 60px; display:grid; grid-template-columns:1.1fr .9fr; gap:28px; align-items:center}
+    .badge{display:inline-flex; align-items:center; gap:8px; padding:8px 12px; border-radius:999px; background:rgba(0,194,255,.12); color:var(--brand2); border:1px solid rgba(79,209,255,.25); font-weight:700; font-size:12px; letter-spacing:.4px}
+    .hero h2{font-size:44px; line-height:1.12; margin:14px 0 10px}
+    .hero p{color:var(--muted); font-size:16px; margin:0 0 22px}
+    .hero-actions{display:flex; gap:12px; flex-wrap:wrap}
+    .hero-card{background:linear-gradient(180deg, rgba(16,26,49,.6), rgba(10,16,27,.6)); border:1px solid rgba(255,255,255,.06); padding:18px; border-radius:var(--radius); display:grid; gap:14px}
+    .hero-art{position:relative}
+    .glow{position:absolute; inset:-30px; background:radial-gradient(400px 200px at 60% 20%, rgba(0,194,255,.2), transparent 60%), radial-gradient(400px 200px at 20% 80%, rgba(74,209,184,.18), transparent 60%); filter:blur(30px); opacity:.9}
+    .artbox{position:relative; background:linear-gradient(180deg, #0f1a30, #0a0f1a); border:1px solid rgba(255,255,255,.06); border-radius:22px; padding:20px; box-shadow:var(--shadow)}
+    .artbox img{border-radius:16px}
+
+    /* Sections */
+    section{max-width:1100px; margin:0 auto; padding:28px 20px 60px}
+    .section-header{display:flex; align-items:baseline; justify-content:space-between; gap:14px; margin-bottom:18px}
+    .section-header h3{margin:0; font-size:28px}
+    .section-header p{margin:0; color:var(--muted)}
+    .grid{display:grid; gap:14px}
+    .grid.rules{grid-template-columns:repeat(3, 1fr)}
+    .card{background:linear-gradient(180deg, rgba(16,26,49,.6), rgba(10,16,27,.65)); border:1px solid rgba(255,255,255,.06); border-radius:var(--radius); padding:18px}
+    .card h4{margin:0 0 8px; font-size:18px}
+    .card p{margin:0; color:var(--muted); font-size:14px}
+
+    .callout{display:flex; gap:14px; align-items:center; padding:16px 18px; background:rgba(0,194,255,.08); border:1px dashed rgba(79,209,255,.35); color:var(--brand2); border-radius:14px; margin:16px 0}
+
+    /* Tables */
+    .table-wrap{overflow:auto; border-radius:14px; border:1px solid rgba(255,255,255,.06)}
+    table{width:100%; border-collapse:collapse; min-width:720px; background:linear-gradient(180deg, #0f1a30, #0b1220)}
+    th,td{padding:14px; text-align:left; font-size:14px}
+    thead th{position:sticky; top:0; background:rgba(0,194,255,.08); color:var(--brand2); border-bottom:1px solid rgba(79,209,255,.25); backdrop-filter:blur(6px)}
+    tbody tr{border-bottom:1px solid rgba(255,255,255,.06)}
+    tbody tr:hover{background:rgba(255,255,255,.03)}
+    .tag{display:inline-flex; padding:4px 10px; border-radius:999px; font-size:12px; border:1px solid rgba(255,255,255,.14); color:#aee8ff}
+
+    /* Footer */
+    footer{border-top:1px solid rgba(255,255,255,.06); background:linear-gradient(180deg, rgba(10,16,27,.7), rgba(10,16,27,.95)); padding:26px 20px; color:var(--muted)}
+    .footer-inner{max-width:1100px; margin:0 auto; display:flex; align-items:center; gap:14px; justify-content:space-between; flex-wrap:wrap}
+    .links{display:flex; gap:12px; flex-wrap:wrap}
+
+    /* Utilities */
+    .hidden{display:none}
+    .sr-only{position:absolute; width:1px; height:1px; margin:-1px; padding:0; overflow:hidden; clip:rect(0,0,0,0); border:0}
+
+    /* Responsive */
+    @media (max-width: 980px){
+      .hero{grid-template-columns:1fr; padding-top:12px}
+      .grid.rules{grid-template-columns:1fr;}
+      .nav-links{display:none}
+      .nav .hamb{margin-left:auto}
+      .mobile{display:none; position:absolute; top:60px; left:0; right:0; background:rgba(10,16,27,.95); border-bottom:1px solid rgba(255,255,255,.06)}
+      .mobile a{display:block; padding:14px 20px; border-top:1px solid rgba(255,255,255,.06)}
+    }
+  </style>
+</head>
+<body>
+  <!-- NAV -->
+  <header class="nav">
+    <div class="nav-inner">
+      <a class="brand" href="#top" aria-label="Inicio BLUELIFECOMMUNITYV2">
+        <img src="https://r2.fivemanage.com/EDoxYCRRUShyyMYu4oXdF/descarga.jpg" alt="Logo BLUELIFECOMMUNITYV2" />
+        <h1>BLUELIFECOMMUNITY<span style="color:var(--brand2)">V2</span></h1>
+      </a>
+      <nav class="nav-links" aria-label="Secciones">
+        <a href="#reglas">Reglas</a>
+        <a href="#rol">Rol</a>
+        <a href="#facciones">Facciones</a>
+        <a href="#sanciones">Sanciones</a>
+        <a class="btn btn-primary" href="https://discord.gg/AMxUCwbd" target="_blank" rel="noopener">Unirme al Discord</a>
+      </nav>
+      <button class="hamb btn" id="hamb" aria-controls="mobile" aria-expanded="false" aria-label="Menú">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+        Menú
+      </button>
+    </div>
+    <div id="mobile" class="mobile" role="dialog" aria-label="Navegación móvil">
+      <a href="#reglas" onclick="closeMobile()">Reglas</a>
+      <a href="#rol" onclick="closeMobile()">Rol</a>
+      <a href="#facciones" onclick="closeMobile()">Facciones</a>
+      <a href="#sanciones" onclick="closeMobile()">Sanciones</a>
+      <a href="https://discord.gg/AMxUCwbd" target="_blank" rel="noopener" onclick="closeMobile()">Unirme al Discord</a>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <main id="top" class="hero">
+    <section>
+      <span class="badge">GTA V • Roleplay • Comunidad</span>
+      <h2>Rolea con estándares altos y <span style="background: linear-gradient(90deg, var(--brand), var(--accent)); -webkit-background-clip:text; background-clip:text; color:transparent">ambientación realista</span>.</h2>
+      <p>
+        Bienvenido a <strong>BLUELIFECOMMUNITYV2</strong>. Aquí encontrarás la normativa, lineamientos de rol, estructura de facciones y el sistema de sanciones. Revisa todo, únete al Discord y postula a tu facción.
+      </p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="https://discord.gg/AMxUCwbd" target="_blank" rel="noopener">Entrar a Discord</a>
+        <a class="btn" href="https://docs.google.com/document/d/14k2RNJT54A7oGKofBRLktICAbDJ7yqaHufdpstdFqIk/edit?tab=t.0" target="_blank" rel="noopener">Abrir Normativa</a>
+      </div>
+      <div class="callout" role="note">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+        Consejo: guarda esta página en marcadores y vuelve cuando necesites revisar reglas.
+      </div>
+      <div class="hero-card">
+        <strong>Transparencia RP</strong>
+        <p class="muted">Toda acción debe ser coherente, proporcional y justificada en el entorno. Metajuego y powergaming están <em>terminantemente prohibidos</em>.</p>
+      </div>
+    </section>
+    <aside class="hero-art">
+      <div class="glow" aria-hidden="true"></div>
+      <div class="artbox">
+        <img src="https://r2.fivemanage.com/EDoxYCRRUShyyMYu4oXdF/descarga.jpg" alt="Arte BLUELIFECOMMUNITYV2"/>
+      </div>
+    </aside>
+  </main>
+
+  <!-- SECCIÓN: REGLAS -->
+  <section id="reglas" aria-labelledby="ttl-reglas">
+    <div class="section-header">
+      <h3 id="ttl-reglas">Reglas generales</h3>
+      <p>Principios base para una convivencia sana y rol limpio.</p>
+    </div>
+    <div class="grid rules">
+      <article class="card">
+        <h4>1. Respeto y conducta</h4>
+        <p>Trata a toda la comunidad con respeto. Conductas tóxicas, insultos o discriminación derivan en sanción inmediata.</p>
+      </article>
+      <article class="card">
+        <h4>2. Metajuego</h4>
+        <p>Prohibido usar info OOC en IC. Mantén separación total entre lo que sabes tú y tu personaje.</p>
+      </article>
+      <article class="card">
+        <h4>3. Powergaming</h4>
+        <p>No realices acciones imposibles o que ignoren las limitaciones del entorno/tu personaje.</p>
+      </article>
+      <article class="card">
+        <h4>4. RDM / VDM</h4>
+        <p>Queda prohibido el asesinato aleatorio (RDM) o usar el vehículo como arma (VDM) sin rol previo y coherente.</p>
+      </article>
+      <article class="card">
+        <h4>5. Fail RP</h4>
+        <p>Evita romper la lógica del rol. Si dudas, prioriza la coherencia, la proporcionalidad y el realismo.</p>
+      </article>
+      <article class="card">
+        <h4>6. Comunicación</h4>
+        <p>Usa /me, /do y voz de forma clara. No abuses del chat OOC.</p>
+      </article>
+    </div>
+    <div class="callout">
+      ¿Dudas específicas? Lee la <a href="https://docs.google.com/document/d/14k2RNJT54A7oGKofBRLktICAbDJ7yqaHufdpstdFqIk/edit?tab=t.0" target="_blank" rel="noopener" style="text-decoration:underline; margin-left:6px">Normativa completa</a>.
+    </div>
+  </section>
+
+  <!-- SECCIÓN: ROL -->
+  <section id="rol" aria-labelledby="ttl-rol">
+    <div class="section-header">
+      <h3 id="ttl-rol">Guía de Rol</h3>
+      <p>Cómo interpretar a tu personaje y moverte por la ciudad.</p>
+    </div>
+    <div class="grid" style="grid-template-columns: repeat(2,1fr)">
+      <article class="card">
+        <h4>Creación de Personaje</h4>
+        <p>Define historia, rasgos y objetivos. Evita nombres troll o referencias OOC. Mantén consistencia entre tu historia y tus acciones.</p>
+      </article>
+      <article class="card">
+        <h4>Escalado de Conflictos</h4>
+        <p>Siempre de menos a más: diálogo → intimidación → confrontación. Usa la fuerza sólo como último recurso y con rol claro.</p>
+      </article>
+      <article class="card">
+        <h4>Interacciones</h4>
+        <p>Describe acciones con /me y contextos con /do. Permite reacciones del otro jugador: evita los roles cerrados.</p>
+      </article>
+      <article class="card">
+        <h4>Economía & Jobs</h4>
+        <p>Sigue la economía server. Evita farmeos irreales. Reporta bugs/exploits al staff sin aprovecharlos.</p>
+      </article>
+    </div>
+  </section>
+
+  <!-- SECCIÓN: FACCIONES -->
+  <section id="facciones" aria-labelledby="ttl-facciones">
+    <div class="section-header">
+      <h3 id="ttl-facciones">Facciones</h3>
+      <p>Estructura base (ejemplo). La doc oficial detalla requisitos y procesos.</p>
+    </div>
+    <div class="grid" style="grid-template-columns: repeat(3,1fr)">
+      <article class="card">
+        <h4>LSPD</h4>
+        <p>Mantener el orden público, procedimientos, reportes y cadena de mando. <span class="tag">Legal</span></p>
+      </article>
+      <article class="card">
+        <h4>EMS</h4>
+        <p>Atención médica, traslados y protocolos de emergencias. <span class="tag" style="color:#bafbe2">Salud</span></p>
+      </article>
+      <article class="card">
+        <h4>Mecánicos</h4>
+        <p>Reparaciones, remolques y rol técnico en ruta y talleres. <span class="tag">Servicios</span></p>
+      </article>
+      <article class="card">
+        <h4>Empresas</h4>
+        <p>Rol empresarial y comercio legal: logística, ventas, contratos. <span class="tag">Civil</span></p>
+      </article>
+      <article class="card">
+        <h4>Bandas</h4>
+        <p>Rol criminal con límites y coherencia: jerarquía y territorio. <span class="tag">Ilegal</span></p>
+      </article>
+      <article class="card">
+        <h4>Gobierno</h4>
+        <p>Administración pública, licencias y normativa local. <span class="tag">Administración</span></p>
+      </article>
+    </div>
+    <div class="callout">
+      ¿Quieres postular? Únete al <a href="https://discord.gg/AMxUCwbd" target="_blank" rel="noopener" style="text-decoration:underline; margin-left:6px">Discord</a> y revisa los canales de convocatorias.
+    </div>
+  </section>
+
+  <!-- SECCIÓN: SANCIONES -->
+  <section id="sanciones" aria-labelledby="ttl-sanciones">
+    <div class="section-header">
+      <h3 id="ttl-sanciones">Sanciones</h3>
+      <p>Tabla referencial. El staff puede ajustar según contexto y antecedentes.</p>
+    </div>
+    <div class="table-wrap">
+      <table aria-describedby="ttl-sanciones">
+        <thead>
+          <tr>
+            <th>Infracción</th>
+            <th>Descripción</th>
+            <th>Primera vez</th>
+            <th>Reincidencia</th>
+            <th>Notas</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Metajuego</td>
+            <td>Usar info OOC en IC</td>
+            <td>Advertencia / <strong>Ban 1-3 días</strong></td>
+            <td><strong>Ban 7-15 días</strong></td>
+            <td>Se evalúa impacto en la escena</td>
+          </tr>
+          <tr>
+            <td>Powergaming</td>
+            <td>Acciones imposibles/abusivas</td>
+            <td>Advertencia / <strong>Ban 3-7 días</strong></td>
+            <td><strong>Ban 15-30 días</strong></td>
+            <td>Puede incluir wipe parcial</td>
+          </tr>
+          <tr>
+            <td>RDM / VDM</td>
+            <td>Matar/someter sin rol</td>
+            <td><strong>Ban 7-15 días</strong></td>
+            <td><strong>Ban 30 días+</strong></td>
+            <td>Escalada depende de daños</td>
+          </tr>
+          <tr>
+            <td>Tóxico/Discriminación</td>
+            <td>Faltas de respeto graves</td>
+            <td><strong>Ban 7-30 días</strong></td>
+            <td><strong>Ban permanente</strong></td>
+            <td>Tolerancia cero</td>
+          </tr>
+          <tr>
+            <td>Exploits/Bugs</td>
+            <td>Aprovechar fallos</td>
+            <td><strong>Ban 7-30 días</strong></td>
+            <td><strong>Ban permanente</strong></td>
+            <td>Reportar de inmediato</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-inner">
+      <div style="display:flex; align-items:center; gap:10px">
+        <img src="https://r2.fivemanage.com/EDoxYCRRUShyyMYu4oXdF/descarga.jpg" alt="Logo" style="width:28px; height:28px; border-radius:6px"/>
+        <span>© <span id="year"></span> BLUELIFECOMMUNITYV2. Todos los derechos reservados.</span>
+      </div>
+      <div class="links">
+        <a href="#reglas">Reglas</a>
+        <a href="#rol">Rol</a>
+        <a href="#facciones">Facciones</a>
+        <a href="#sanciones">Sanciones</a>
+        <a href="https://discord.gg/AMxUCwbd" target="_blank" rel="noopener">Discord</a>
+        <a href="https://docs.google.com/document/d/14k2RNJT54A7oGKofBRLktICAbDJ7yqaHufdpstdFqIk/edit?tab=t.0" target="_blank" rel="noopener">Normativa</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Año dinámico
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Menú móvil
+    const hamb = document.getElementById('hamb');
+    const mobile = document.getElementById('mobile');
+    function closeMobile(){ mobile.style.display='none'; hamb.setAttribute('aria-expanded','false'); }
+    hamb.addEventListener('click', ()=>{
+      const open = mobile.style.display === 'block';
+      mobile.style.display = open ? 'none' : 'block';
+      hamb.setAttribute('aria-expanded', String(!open));
+    });
+
+    // Resalta link activo al hacer scroll
+    const sections = ['reglas','rol','facciones','sanciones'];
+    const links = Array.from(document.querySelectorAll('.nav-links a'));
+    const isVisible = (el)=>{
+      const r = el.getBoundingClientRect();
+      return r.top <= 120 && r.bottom >= 120; // umbral bajo el header
+    }
+    document.addEventListener('scroll', ()=>{
+      for(const id of sections){
+        const el = document.getElementById(id);
+        if (isVisible(el)){
+          links.forEach(a=>a.style.color='var(--muted)');
+          const active = links.find(a=>a.getAttribute('href')==='#'+id);
+          if (active) active.style.color='var(--brand2)';
+          break;
+        }
+      }
+    });
+  </script>
+</body>
+</html>
